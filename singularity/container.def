@@ -1,0 +1,86 @@
+Bootstrap: debootstrap
+MirrorURL: http://us.archive.ubuntu.com/ubuntu
+OSVersion: focal
+
+%files
+    /home/user/Documents/research/cli* /cli
+    /home/user/Documents/research/singularity/containerScript.js /start.js
+    /home/user/Documents/research/singularity/package.json /package.json
+
+%post
+    #When running the container run with --bind {Path to where straces go}:/straces
+    mkdir /straces
+    #When running the container run with --bind {Path to npm packages}:/packages
+    mkdir /packages
+    mkdir /InstancePkgs
+
+    apt-get update && apt-get -y install software-properties-common
+    apt-get update && add-apt-repository main
+    apt-get update && add-apt-repository universe
+    apt-get update && add-apt-repository restricted
+    apt-get update && add-apt-repository multiverse
+    apt-get update && apt-get -y install python
+    apt-get update && apt-get -y install snapd
+    apt-get update && apt-get -y install build-essential
+    apt-get update && apt-get -y install ubuntu-standard
+    apt-get update && apt-get -y install git
+    apt-get update && apt-get -y install default-jre
+    apt-get update && apt-get -y install default-jdk
+    apt-get update && apt-get -y install rustc
+    apt-get update && add-apt-repository ppa:longsleep/golang-backports
+    apt-get update && apt-get -y install golang-go
+    apt-get update && apt-get -y install cargo
+    apt-get update && apt-get -y install xterm
+    apt-get update && apt-get -y install zsh
+    apt-get update && apt-get -y install zip
+    apt-get update && apt-get -y install unzip
+    apt-get update && apt-get -y install cmdtest
+    apt-get update && apt-get -y install sudo
+    #apt-get update && apt-get -y install emscripten
+    apt-get update && apt-get -y install ticgit
+    #apt-get update && snap install dotnet-sdk
+    apt-get update && apt-get -y install ruby-factory-girl-rails
+    #apt-get update && apt-get -y install ImageMagick
+    apt-get update && apt-get -y install libmysqlclient-dev
+    apt-get update && apt-get -y install pkg-config
+    apt-get update && apt-get -y install ruby
+    apt-get update && apt-get -y install capnproto
+    apt-get update && apt-get -y install cabal-install
+    apt-get update && apt-get -y install coffeescript
+    apt-get update && apt-get -y install webpack
+    apt-get update && apt-get -y install meson
+    apt-get update && apt-get -y install python3-pip
+    #apt-get update && apt-get -y install php7.2-cli
+    apt-get update && apt-get -y install cmake
+    apt-get update && apt-get -y install erlang-base
+    apt-get update && apt-get -y install gulp
+    apt-get update && apt-get -y install fish
+    apt-get update && apt-get -y install xdg-utils
+    apt-get update && apt-get -y install maven
+    apt-get update && apt-get -y install netcat
+    apt-get update && apt-get -y install elixir
+    apt-get update && apt-get -y install lua5.2
+    #apt-get update && apt-get -y install protobuf
+    apt-get update && apt-get -y install bison
+    apt-get update && apt-get -y install xsltproc
+    apt-get update && apt-get -y install mitmproxy
+    apt-get update && apt-get -y install finch
+    apt-get update && apt-get -y install autoconf
+    apt-get update && apt-get -y install dos2unix
+    #apt-get update && apt-get -y install phantomjs
+    apt-get update && apt-get -y install alsa-utils
+    apt-get update && apt-get -y install jq
+    apt-get update && apt-get -y install jbuilder
+    apt-get update && apt-get -y install haskell-stack
+    apt-get update && apt-get -y install clang
+    apt-get update && apt-get -y install node-typescript
+    apt-get update && apt-get -y install heimdal-multidev
+    apt-get update && apt-get -y install libxml2-utils
+    #apt-get update && apt-get -y install xdg-open
+    apt-get update && apt-get -y install libwxbase3.0-dev
+    apt-get update && apt-get install -y curl && curl -sL https://deb.nodesource.com/setup_12.x | bash && apt-get install -y nodejs
+    npm install -g babel-cli babel-core    
+    
+
+%runscript
+    mkdir $2 && cd $2 && cp /package.json ./ && mkdir node_modules && mkdir cache && node /cli/bin/npm-cli.js config set cache ./cache && node /start.js $1
