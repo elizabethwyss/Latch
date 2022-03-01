@@ -49,7 +49,7 @@ For this project an exisiting js strace parser was extended (https://github.com/
 
 ## Policy
 
-This folder contains the files for the simple policy language used to process manifests.
+This folder contains the files for the policy language as well as details for writing policies.
 
 ### analyzeManifestList.js
 
