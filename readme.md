@@ -53,7 +53,7 @@ This folder contains the files for the simple policy language used to process ma
 
 ### analyzeManifestList.js
 
-This file is a single job for a parallel batch job to analyze all manifests against a policy. A batch job is not really necessary with only 400k packages because all could be analyzed on my local machine in a few hours.
+This file is a single job for a parallel batch job to analyze all manifests against a policy. A batch job is not really necessary with only 400k packages because all could be analyzed on a typical local machine in a few hours.
 
 ### maintainer.json
 
@@ -87,9 +87,6 @@ This script is used to build the singularity container.
 
 This is the singularity container definition file. It specifies what happens when the container gets built. Change the ./start.js script in this file to containerScriptSingle.js to analyze a package name or to containerScriptMulti.js to analyze a list of packages in a file.
 
-### container.sif
-
-This is the singularity container file that gets built from the buildContainer.sh script.
 
 ### containerScriptSingle.js
 
