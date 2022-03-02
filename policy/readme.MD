@@ -48,7 +48,7 @@ or they can be combined as so
 
 ### Declarations
 
-Declarations function like variables that can be utilized in policy rules as well as other declarations. They are expressed as a list of strings where the left hand side provides an identifier for the declaration and the right hand side provides a value expressed as set operations and/or boolean operations over manifest attributes, declarations, file path strings, and host url strings. Strings can additionally be expressed using regular expressions.
+Declarations function like variables that can be utilized in policy rules as well as other declarations. They are expressed as a list of strings where the left hand side provides an identifier for the declaration and the right hand side provides a value expressed as set operations and/or boolean operations over manifest attributes, declarations, file path strings, and host ip strings. Strings can additionally be expressed using regular expressions.
 
 ```
 "declarations": [
@@ -92,7 +92,7 @@ Below is the list of boolean operations available for use in declarations and po
 
 ### Policy Rules
 
-Policy rules are expressed as two lists of strings, a warn list and a fail list. Each rule is expressed as a boolean value over manifest attributes, declarations, file path strings, and host url strings.
+Policy rules are expressed as two lists of strings, a warn list and a fail list. Each rule is expressed as a boolean value over manifest attributes, declarations, file path strings, and host ip strings.
 
 ```
 "rulesFail": [
