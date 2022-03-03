@@ -29,7 +29,7 @@ Below is the list of manifest attributes that policies can operate over
 'unpriveledgedExecFiles'
 ```
 
-Each attribute can be expressed at the granularity of individual scripts
+Each attribute is expressed at the granularity of individual scripts
 
 ```
 'preinstall'
